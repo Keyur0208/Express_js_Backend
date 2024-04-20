@@ -11,8 +11,18 @@ var authRouter = require('./app/routes/auth');
 var adminRouter = require('./app/routes/admin');
 var cors = require('cors');
 const mongoose = require('mongoose');
-const { Mongodb_url } = require('./app/configuration/all.configuration');
+const { Mongodb_url, NODE_URL } = require('./app/configuration/all.configuration');
 var app = express();
+const port = NODE_URL || 4000;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
 
 
 // DataBase Connected //
